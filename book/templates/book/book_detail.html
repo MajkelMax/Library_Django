@@ -1,0 +1,28 @@
+{% extends "book/base.html" %}
+{% block content %}
+<table class="table table-dark">
+   <tbody>
+          <th scope="col">Tytuł</th>
+          <th scope="col">Autor</th>
+          <th scope="col">Data publikacji</th>
+          <th scope="col">Numer ISBN</th>
+          <th scope="col">Ilość stron</th>
+          <th scope="col">Język</th>
+          <th scope="col">Opcja</th>
+        </tr>
+   </tbody>
+
+    <tbody>
+       <tr>
+          <td>{{ book.title }}</td>
+          <td>{{ book.author }}</td>
+          <td>{{ book.pub_date }}</td>
+          <td>{{ book.isbn }}</td>
+          <td>{{ book.pages }}</td>
+          <td>{{ book.language }}</td>
+          <td><a class="btn btn-outline-warning btn-sm mt-1 mb-1" href="{% url 'book-update' object.id %}">Aktualizuj</a></td>
+          <td><a class="btn btn-outline-danger my-2 my-sm-0" href="{% url 'book-delete' object.id %}">Usuń</a></td>
+       </tr>
+    </tbody>
+</table>
+{% endblock content %}
