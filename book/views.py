@@ -10,6 +10,11 @@ def book_list(request):
     context = {'books':books}
     return render(request, 'book/home.html', context)
 
+def book_search(request):
+    q = request.POST['query']
+    books = Book.objects.filter(title__contains=q)
+    return render(request, 'book/search_books.html', {'books':books})
+
 
 class BookCreateView(CreateView):
     model = Book
