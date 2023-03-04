@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 import requests
 from book.models import Book
 from book.views import book_list
@@ -28,11 +27,11 @@ def api_search_book_details(request):
     if request.method == "POST":
         if len(res_published_date) < 5:
             res_published_date += "-01-01"
-            x = Book(title=res_title, author=res_authors,
-                 pub_date=res_published_date, isbn=res_isbn,
-                 pages=res_page_count, language=res_language)
-            Book.save(x)
-            return book_list(request)
+        x = Book(title=res_title, author=res_authors,
+             pub_date=res_published_date, isbn=res_isbn,
+             pages=res_page_count, language=res_language)
+        Book.save(x)
+        return book_list(request)
 
     context = {'book': book}
 
