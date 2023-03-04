@@ -1,0 +1,30 @@
+{% extends "book/base.html" %}
+{% block content %}
+<form class="d-flex" role="search" action="books_results" method="get">
+      <input class="form-control me-2" type="search" name="search" placeholder="Wyszukaj" aria-label="Search">
+      <button class="btn btn-success" type="submit">Szukaj</button>
+</form>
+<table class="table table-dark">
+   <tbody>
+          <th scope="col">Tytuł (razem: {{response.totalItems}})</th>
+          <th scope="col">Autor</th>
+          <th scope="col">Data publikacji</th>
+          <th scope="col">Numer ISBN</th>
+          <th scope="col">Ilość stron</th>
+          <th scope="col">Język</th>
+        </tr>
+   </tbody>
+    {% for book in response.items %}
+    <tbody>
+       <tr>
+          <form method="get" action="book_details" role="form"><td><button class="btn btn-success"  name="book_info" value="{{book.selfLink}}"> {{book.volumeInfo.title}} </button></td> </form>
+          <td>{{book.volumeInfo.authors.0}}</td>
+          <td>{{book.volumeInfo.publishedDate}}</td>
+          <td>{{book.volumeInfo.industryIdentifiers.0.type}}: {{book.volumeInfo.industryIdentifiers.0.identifier}}</td>
+          <td>{{book.volumeInfo.pageCount}}</td>
+          <td>{{book.volumeInfo.language}}</td>
+        </tr>
+    </tbody>
+    {% endfor %}
+</table>
+{% endblock content %}
