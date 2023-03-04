@@ -13,9 +13,10 @@
           <a class="nav-link" href="{% url 'api-book-search' %}">Wyszukaj książkę poprzez API</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Wyszukaj" aria-label="Search">
-        <button class="btn btn-success" type="submit">Szukaj</button>
+      <form class="d-flex" role="search" method="post" action="{% url 'book-search' %}">
+        {% csrf_token %}
+        <input class="form-control me-2" type="search" name="query" placeholder="Wyszukaj" aria-label="Search">
+        <button class="btn btn-success" type="submit" >Szukaj</button>
       </form>
     </div>
   </div>
