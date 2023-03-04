@@ -8,7 +8,7 @@ class Book(models.Model):
     pub_date = models.DateField(verbose_name="Data publikacji (RRRR-MM-DD)")
     isbn = models.IntegerField(verbose_name="Numer ISBN")
     pages = models.PositiveIntegerField(verbose_name="Liczba stron")
-    language = models.CharField(max_length=10, verbose_name="Język test")
+    language = models.CharField(max_length=10, verbose_name="Język")
 
     def __str__(self):
         return self.title
