@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django_filters',
     'crispy_forms',
     'book.apps.BookConfig',
+    'GoogleApi.apps.GoogleapiConfig',
     'debug_toolbar',
 
     'django.contrib.admin',
