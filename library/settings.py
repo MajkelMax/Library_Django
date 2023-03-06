@@ -34,7 +34,6 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'crispy_bootstrap5',
     'rest_framework',
-    'django_filters',
     'crispy_forms',
     'book.apps.BookConfig',
     'GoogleApi.apps.GoogleapiConfig',
