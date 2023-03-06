@@ -11,7 +11,7 @@
           <th scope="col">Język</th>
         </tr>
    </tbody>
-    {% for book in books %}
+    {% for book in page_obj %}
     <tbody>
        <tr>
           <td><a href="{% url 'book-detail' book.id %}">{{book.title}}</a></td>
@@ -24,4 +24,21 @@
     </tbody>
     {% endfor %}
 </table>
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+           <a href="?page=1"><button class="btn btn-success" type="submit">Pierwsza</button></a>
+           <a href="?page={{ page_obj.previous_page_number }}"><button class="btn btn-success">Poprzednia</button></a>
+        {% endif %}
+
+        <span class="current">
+            Strona {{ page_obj.number }} z {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}"><button class="btn btn-success">Następna</button></a>
+            <a href="?page={{ page_obj.paginator.num_pages }}"><button class="btn btn-success">Ostatnia</button></a>
+        {% endif %}
+    </span>
+</div>
 {% endblock content %}
